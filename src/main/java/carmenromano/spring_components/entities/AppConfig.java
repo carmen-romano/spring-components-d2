@@ -1,13 +1,19 @@
 package carmenromano.spring_components.entities;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
+@PropertySource("application.properties")
 public class AppConfig {
+	@Bean(name = "tavolo")
+	public Tavolo tavolo(){return new Tavolo();
+	}
 	@Bean(name = "toppings_tomato")
 	public Topping toppingTomatoBean() {
 		return new Topping("Tomato", 0, 0);
@@ -85,6 +91,7 @@ public class AppConfig {
 		return new Drink("Wine", 607, 7.49);
 	}
 
+
 	@Bean(name = "menu")
 	public Menu menuBean() {
 		List<Pizza> pizzaList = new ArrayList<>();
@@ -108,4 +115,5 @@ public class AppConfig {
 
 		return new Menu(pizzaList, drinkList, toppingsList);
 	}
+
 }

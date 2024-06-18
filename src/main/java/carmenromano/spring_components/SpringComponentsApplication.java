@@ -13,12 +13,6 @@ public class SpringComponentsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringComponentsApplication.class, args);
 
-		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(SpringComponentsApplication.class);
-
-		Menu m = (Menu) ctx.getBean("menu");
-
-		m.printMenu();
-		ctx.close();
 	}
 
 }
