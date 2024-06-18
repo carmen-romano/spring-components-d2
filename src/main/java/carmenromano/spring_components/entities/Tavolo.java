@@ -13,12 +13,14 @@ public class Tavolo {
     private int numero;
     private int numeroCoperti;
     private boolean occupato;
+    private double costoCoperto;
 
-    public Tavolo() {
+    public Tavolo(double costoCoperto) {
         this.numero = ++counter;
         Random random = new Random();
         this.numeroCoperti = random.nextInt(10);
         this.occupato = false;
+        this.costoCoperto = costoCoperto;
     }
 
     @Override

@@ -14,8 +14,7 @@ import org.springframework.stereotype.Component;
 public class CommandRunner implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(CommandRunner.class);
-    @Autowired
-    private Ordine ordine;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -24,8 +23,8 @@ public class CommandRunner implements CommandLineRunner {
         m.printMenu();
         Tavolo t = (Tavolo) ctx.getBean("tavolo");
 
+        Ordine ordine = new Ordine(t);
         ordine.aggiungiElementoOrdinato(m.getPizzaList().get(2));
-        ordine.aggiungiElementoOrdinato(m.getDrinkList().get(1));
 
 
         logger.info("Ordine creato:\n{}", ordine);

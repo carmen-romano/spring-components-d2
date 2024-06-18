@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@Component
 public class Ordine {
     private static int counter = 0;
 
@@ -23,10 +21,7 @@ public class Ordine {
     private List<Item> elementiOrdinati;
     private LocalDateTime oraAcquisizione;
 
-    @Value("${costo.coperto}")
-    private double costoCoperto;
 
-    @Autowired
     public Ordine(Tavolo tavolo) {
         this.numeroOrdine = ++counter;
         this.stato = EStatoOrdine.INCORSO;
@@ -44,7 +39,7 @@ public class Ordine {
     }
 
     public double getImportoTotale() {
-        double totale = tavolo.getNumeroCoperti() * costoCoperto;
+        double totale = tavolo.getNumeroCoperti() * tavolo.getCostoCoperto();
         for (Item elemento : elementiOrdinati) {
             totale += elemento.getPrice();
         }
